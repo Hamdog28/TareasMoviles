@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 //colones a dolares
                 case R.id.radioDolares:
-                    res = "$" + (Integer.parseInt(monto)/567.72);
+                    res = "$" + (Double.parseDouble(0+monto)/567.72);
                     break;
             }
             resultado.setText(res);
