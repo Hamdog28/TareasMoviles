@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                     TextView fin = findViewById(R.id.Fin);
                     fin.setText("Fin del juego");
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
-                    tablero.setVisibility(View.GONE);
+                    tablero.setVisibility(View.INVISIBLE);
                     num_fila = -13;
                 }
             }
