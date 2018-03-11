@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         llenarTabla();
 
         Random rand = new Random();
-        pieza = rand.nextInt(5) +1;  //1 <= n <= 2
-        pieza = 6;
+        pieza = rand.nextInt(7) +1;  //1 <= n <= 2
+        //pieza = 6;
         if(pieza == 1)
             num_fila = 3;
         else if(pieza == 2 || pieza == 5 || pieza == 6 || pieza == 7)
@@ -79,15 +79,15 @@ public class MainActivity extends AppCompatActivity {
     private void juego() {
         TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
 
-        CountDownTimer timer = new CountDownTimer(21000, 1100) {
+        CountDownTimer timer = new CountDownTimer(21000, 1090) {
 
             public void onTick(long millisUntilFinished) {
 
                 Log.d("tiempo", Integer.toString((int)millisUntilFinished/1000));
                 if((int)millisUntilFinished/1000 <1 || num_fila < 0) {
                     this.cancel();
-                    Log.d("esto", Integer.toString(num_fila));
 
+                    Log.d("esto", Integer.toString(num_fila));
                     if (num_fila>0){
                         if(pieza == 1) {
                             for(int i = 2; i<6; i++){
@@ -123,7 +123,15 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         }
-                        else if(pieza == 6){}
+                        else if(pieza == 6){
+
+                            for (int i = 0; i < 2; i++) {
+                                posiciones[num_fila - i - 1][num_columna + i - 1] = "g";
+                                posiciones[num_fila - i - 1][num_columna + i] = "g";
+
+
+                            }
+                        }
                         else if(pieza == 7) {
                             for (int i = 0; i < 2; i++) {
                                 posiciones[num_fila - i - 1][num_columna - i + 1] = "r";
@@ -164,6 +172,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
+                if(pieza == 6 && num_fila>0){
+
+                    for (int i = 0; i < 2; i++) {
+                        posiciones[num_fila - i - 1][num_columna + i - 1] = "g";
+                        posiciones[num_fila - i - 1][num_columna + i] = "g";
+
+
+                    }
+                }
+
                 Random rand = new Random();
                 Log.d("hola2", Integer.toString(num_fila));
                 for (int i = 0; i < posiciones.length; i++) {
@@ -172,8 +190,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     System.out.println();
                 }
-                pieza = rand.nextInt(5) +1;
-                pieza = 6;
+                pieza = rand.nextInt(7) +1;
+                //pieza = 6;
                 if(pieza == 1)
                     num_fila = 2;
                 else if(pieza == 2 || pieza == 5 || pieza == 6 ||pieza == 7)
@@ -184,25 +202,38 @@ public class MainActivity extends AppCompatActivity {
                 num_columna = 5;
 
                 revisarMatriz();
-                juego();
+                if(num_fila!=-13)
+                    juego();
+                else{
+
+                }
+
 
             }
             public void pintar() {
-
-                if (pieza == 1)
-                    pintar_l();
-                else if (pieza == 2)
-                    pintar_O();
-                else if (pieza == 3)
-                    pintar_L();
-                else if (pieza == 4)
-                    pintar_J();
-                else if (pieza == 5)
-                    pintar_T();
-                else if (pieza == 6)
-                    pintar_S();
-                else if (pieza == 7)
-                    pintar_Z();
+                try{
+                    if (pieza == 1)
+                        pintar_l();
+                    else if (pieza == 2)
+                        pintar_O();
+                    else if (pieza == 3)
+                        pintar_L();
+                    else if (pieza == 4)
+                        pintar_J();
+                    else if (pieza == 5)
+                        pintar_T();
+                    else if (pieza == 6)
+                        pintar_S();
+                    else if (pieza == 7)
+                        pintar_Z();
+                }
+                catch (ArrayIndexOutOfBoundsException e){
+                    TextView fin = findViewById(R.id.Fin);
+                    fin.setText("Fin del juego");
+                    TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
+                    tablero.setVisibility(View.GONE);
+                    num_fila = -13;
+                }
             }
             public void pintar_L(){
                 Log.d("pintar", Integer.toString(num_fila));
@@ -378,14 +409,14 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d("pintar", Integer.toString(num_fila));
                 TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
-                if(num_columna<9) {
-                    if (num_fila > 1 && num_fila <= 20 && posiciones[num_fila-1][num_columna - 1] == null && posiciones[num_fila-1][num_columna] == null && posiciones[num_fila-2][num_columna-2] == null) {
+                if(num_columna<10) {
+                    if (num_fila > 1 && num_fila <= 20 && posiciones[num_fila-1][num_columna - 1] == null && posiciones[num_fila-2][num_columna] == null && posiciones[num_fila-1][num_columna-2] == null) {
                         for (int i = 0; i < 2; i++) {
                             TableRow fila = (TableRow) tablero.getChildAt(num_fila - i);
-                            ImageView image = (ImageView) fila.getChildAt(num_columna + i + 1);
+                            ImageView image = (ImageView) fila.getChildAt(num_columna + i);
                             image.setImageResource(R.drawable.block_green);
 
-                            image = (ImageView) fila.getChildAt(num_columna + i);
+                            image = (ImageView) fila.getChildAt(num_columna + i-1);
                             image.setImageResource(R.drawable.block_green);
 
                         }
@@ -393,15 +424,15 @@ public class MainActivity extends AppCompatActivity {
                         for (int i = 1; i < 3; i++) {
 
                             TableRow fila = (TableRow) tablero.getChildAt(num_fila - i );
-                            ImageView image = (ImageView) fila.getChildAt(num_columna + i);
+                            ImageView image = (ImageView) fila.getChildAt(num_columna + i-1);
                             image.setImageResource(R.drawable.block_green);
 
-                            image = (ImageView) fila.getChildAt(num_columna + i-1);
+                            image = (ImageView) fila.getChildAt(num_columna + i-2);
                             image.setImageResource(R.drawable.block_green);
 
 
-                            posiciones[num_fila - i - 1][num_columna  + i - 1] = "g";
-                            posiciones[num_fila - i - 1][num_columna + i-2] = "g";
+                            posiciones[num_fila - i - 1][num_columna  + i - 2] = "g";
+                            posiciones[num_fila - i - 1][num_columna + i - 3] = "g";
 
 
                         }
@@ -608,10 +639,10 @@ public class MainActivity extends AppCompatActivity {
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                     for(int i=0;i<2;i++) {
                         TableRow fila = (TableRow) tablero.getChildAt(num_fila - i);
-                        ImageView image = (ImageView) fila.getChildAt(num_columna + i + 1);
+                        ImageView image = (ImageView) fila.getChildAt(num_columna + i);
                         image.setImageDrawable(null);
 
-                        image = (ImageView) fila.getChildAt(num_columna + i);
+                        image = (ImageView) fila.getChildAt(num_columna + i - 1);
                         image.setImageDrawable(null);
 
 
@@ -655,7 +686,7 @@ public class MainActivity extends AppCompatActivity {
                                     num_columna--;
                                     pintar();
                                 }
-                                else if(pieza == 6 && posiciones[num_fila-1][num_columna-2] == null && posiciones[num_fila - 2][num_columna-3]==null){
+                                else if(pieza == 6 && posiciones[num_fila-1][num_columna-3] == null && posiciones[num_fila - 2][num_columna-2]==null && num_columna>2){
                                     borrar();
                                     num_columna--;
                                     pintar();

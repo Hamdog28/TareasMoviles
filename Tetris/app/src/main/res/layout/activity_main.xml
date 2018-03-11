@@ -111,6 +111,17 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/Fin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/Tablero"
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_marginBottom="169dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
