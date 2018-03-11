@@ -83,11 +83,9 @@ public class MainActivity extends AppCompatActivity {
 
             public void onTick(long millisUntilFinished) {
 
-                Log.d("tiempo", Integer.toString((int)millisUntilFinished/1000));
                 if((int)millisUntilFinished/1000 <1 || num_fila < 0) {
                     this.cancel();
 
-                    Log.d("esto", Integer.toString(num_fila));
                     if (num_fila>0){
                         if(pieza == 1) {
                             for(int i = 2; i<6; i++){
@@ -164,8 +162,6 @@ public class MainActivity extends AppCompatActivity {
                     image.setImageResource(R.drawable.block_block);
                 }
 
-                Log.d("fila y columna", Integer.toString(num_fila) + "," + Integer.toString(num_columna) + "," + Integer.toString(pieza));
-
 
 
 
@@ -183,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Random rand = new Random();
-                Log.d("hola2", Integer.toString(num_fila));
                 for (int i = 0; i < posiciones.length; i++) {
                     for (int j = 0; j < posiciones[i].length; j++) {
                         System.out.print(posiciones[i][j] + " ");
@@ -232,11 +227,9 @@ public class MainActivity extends AppCompatActivity {
                     fin.setText("Fin del juego");
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                     tablero.setVisibility(View.INVISIBLE);
-                    num_fila = -13;
                 }
             }
             public void pintar_L(){
-                Log.d("pintar", Integer.toString(num_fila));
                 TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                 if(num_columna<10) {
                     if (num_fila > 2 && num_fila <= 20 && posiciones[num_fila-1][num_columna - 1] == null && posiciones[num_fila-1][num_columna] == null ) {
@@ -278,7 +271,6 @@ public class MainActivity extends AppCompatActivity {
 
                 TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                 if(num_columna<10) {
-                    Log.d("pintar", Integer.toString(num_fila));
                     if (num_fila > 2 && num_fila <= 20 && posiciones[num_fila-1][num_columna - 1] == null && posiciones[num_fila-1][num_columna] == null ) {
                         for (int i = 0; i < 3; i++) {
                             TableRow fila = (TableRow) tablero.getChildAt(num_fila - i);
@@ -317,7 +309,6 @@ public class MainActivity extends AppCompatActivity {
             }
             public void pintar_T(){
 
-                Log.d("pintar", Integer.toString(num_fila));
                 TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                 if(num_columna<10) {
                     if (num_fila > 1 && num_fila <= 20 && posiciones[num_fila-1][num_columna - 1] == null && posiciones[num_fila-2][num_columna] == null && posiciones[num_fila-2][num_columna-2] == null) {
@@ -366,7 +357,6 @@ public class MainActivity extends AppCompatActivity {
             }
             public void pintar_Z(){
 
-                Log.d("pintar", Integer.toString(num_fila));
                 TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                 if(num_columna<10) {
                     if (num_fila > 1 && num_fila <= 20 && posiciones[num_fila-1][num_columna - 1] == null && posiciones[num_fila-1][num_columna] == null && posiciones[num_fila-2][num_columna-2] == null) {
@@ -407,7 +397,6 @@ public class MainActivity extends AppCompatActivity {
             }
             public void pintar_S(){
 
-                Log.d("pintar", Integer.toString(num_fila));
                 TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                 if(num_columna<10) {
                     if (num_fila > 1 && num_fila <= 20 && posiciones[num_fila-1][num_columna - 1] == null && posiciones[num_fila-2][num_columna] == null && posiciones[num_fila-1][num_columna-2] == null) {
@@ -446,7 +435,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             public void pintar_O(){
-                Log.d("pintar", Integer.toString(num_fila));
                 TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                 if(num_columna<10) {
                     if (num_fila > 1 && num_fila <= 20 && posiciones[num_fila-1][num_columna - 1] == null && posiciones[num_fila-1][num_columna] == null ) {
@@ -482,7 +470,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void pintar_l(){
-                Log.d("pintar", Integer.toString(num_fila));
                 TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
 
                 if (num_fila > 3 && num_fila <= 20 && posiciones[num_fila - 1][num_columna - 1] == null) {
@@ -518,17 +505,9 @@ public class MainActivity extends AppCompatActivity {
                     borrar_S();
                 else if (pieza == 7)
                     borrar_Z();
-                /*
-                if (num_fila > 0 & num_fila <= 20){
-                        TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
-                        TableRow fila = (TableRow) tablero.getChildAt(num_fila);
-                        ImageView image = (ImageView) fila.getChildAt(num_columna);
-                        image.setImageDrawable(null);
 
-                }*/
             }
             public void borrarl(){
-                Log.d("borrar", Integer.toString(num_fila));
                 if (num_fila > 2 & num_fila <= 20){
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                     for(int i=0;i<4;i++) {
@@ -540,7 +519,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             public void borrar_O(){
-                Log.d("borrar", Integer.toString(num_fila));
                 if (num_fila > 0 & num_fila <= 20){
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                     for(int i=0;i<2;i++) {
@@ -556,7 +534,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             public void borrar_L(){
-                Log.d("borrar", Integer.toString(num_fila));
                 if (num_fila > 1 & num_fila <= 20){
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                     for(int i=0;i<3;i++) {
@@ -575,7 +552,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             public void borrar_J(){
-                Log.d("borrar", Integer.toString(num_fila));
                 if (num_fila > 1 & num_fila <= 20){
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                     for(int i=0;i<3;i++) {
@@ -596,7 +572,6 @@ public class MainActivity extends AppCompatActivity {
 
             public void borrar_T(){
 
-                Log.d("borrar", Integer.toString(num_fila));
                 if (num_fila > 0 & num_fila <= 20){
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                     for(int i=0;i<2;i++) {
@@ -616,7 +591,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
             public void borrar_Z(){
-                Log.d("borrar", Integer.toString(num_fila));
                 if (num_fila > 0 & num_fila <= 20){
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                     for(int i=0;i<2;i++) {
@@ -634,7 +608,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
             public void borrar_S(){
-                Log.d("borrar", Integer.toString(num_fila));
                 if (num_fila > 0 & num_fila <= 20){
                     TableLayout tablero = (TableLayout) findViewById(R.id.Tablero);
                     for(int i=0;i<2;i++) {
@@ -701,7 +674,6 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View view) {
-                        Log.d("derecha", Integer.toString(num_columna));
                         try {
                             if (num_columna < 10 ) {
 
@@ -739,7 +711,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                         catch(ArrayIndexOutOfBoundsException e){
-                            Log.d("error","derecha");
                         }
                     }});
                 Button botonAbajo = (Button) findViewById(R.id.button_down);
