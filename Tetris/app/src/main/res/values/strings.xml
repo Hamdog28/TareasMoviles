@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tetris</string>
+    <string name="icon_izquierda">&#xf060;</string>
+    <string name="icon_derecha">&#xf061;</string>
+    <string name="icon_abajo">&#xf063;</string>
+    <string name="icon_giro">&#xf01e;</string>
+</resources>
