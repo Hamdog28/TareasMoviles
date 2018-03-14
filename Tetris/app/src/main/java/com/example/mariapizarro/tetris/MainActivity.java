@@ -4,19 +4,15 @@ import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private int filas_eliminadas = 0;
 
     /*
-    * 1 = linea -> celeste num fila+3
+    * 1 = linea -> celeste num fila 3
     * 2 = cuadro -> amarillo fila 1
     * 3 = L -> naranja fila 2
     * 4 = J -> azul fila 2
@@ -60,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         Random rand = new Random();
         pieza = rand.nextInt(7) +1;  //1 <= n <= 2
-        //pieza = 6;
+
         if(pieza == 1)
             num_fila = 3;
         else if(pieza == 2 || pieza == 5 || pieza == 6 || pieza == 7)
@@ -186,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println();
                 }
                 pieza = rand.nextInt(7) +1;
-                //pieza = 6;
+
                 if(pieza == 1)
                     num_fila = 2;
                 else if(pieza == 2 || pieza == 5 || pieza == 6 ||pieza == 7)
